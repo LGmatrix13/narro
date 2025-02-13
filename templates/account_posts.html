@@ -1,0 +1,24 @@
+{% extends "account.html" %} {% block title %}Account Posts{% endblock %} {%
+block account_content %}
+<section class="space-y-5 mb-10 flex flex-col">
+  <h2 class="text-xl text-white font-bold">My Posts</h2>
+  {% if posts %} {% for post in posts %}
+  <div
+    class="p-5 rounded-lg bg-slate-50/[0.06] flex flex-row items-center"
+    onclick="window.location = `/post/{{ post.id }}`"
+  >
+    <div class="space-y-3 flex flex-col">
+      <h3 class="text-white font-bold">{{ post.post_title }}</h3>
+      <p class="line-clamp-2">{{ post.post_story }}</p>
+    </div>
+  </div>
+  {% endfor %} {% else %}
+  <div class="p-5 rounded-lg bg-slate-50/[0.06]">You have no posts yet</div>
+  {% endif %}
+  <a href="/story/" role="button">
+    <button class="bg-blue-600 text-white w-full rounded-lg p-3">
+      Add Story
+    </button>
+  </a>
+</section>
+{% endblock %}

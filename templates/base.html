@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" >
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" >
+    <script src="https://cdn.tailwindcss.com"></script>
+    {% block script %}{% endblock %}
+    <title>{% block title %}{% endblock %}</title>
+  </head>
+  <body class="flex min-h-screen flex-col bg-slate-900 text-slate-400 text-lg">
+    <header class="border-slate-50/[0.06] border-b-2 mb-10">
+      <div
+        class="max-w-screen-lg mx-auto flex items-center my-10 px-7 justify-between"
+      >
+        <div
+          class="lg:space-x-10 lg:flex lg:flex-row lg:items-center flex-col lg:space-y-0 space-y-5"
+        >
+          <a href="/">
+            <h1 class="font-bold text-3xl text-white">Narro</h1>
+          </a>
+          <div class="space-x-5 flex flex-row">
+            <a href="/">
+              <p>Feed</p>
+            </a>
+            <a href="/account/">
+              <p>Account</p>
+            </a>
+            <a href="/story/">
+              <p>Story</p>
+            </a>
+          </div>
+        </div>
+        {% if not current_user.is_authenticated %}
+        <div class="space-x-5 flex">
+          <a href="/login/">
+            <p>Login</p>
+          </a>
+          <a href="/register/">
+            <p>Register</p>
+          </a>
+        </div>
+        {% else %}
+        <a href="/logout/">
+          <p>Logout</p>
+        </a>
+        {% endif %}
+      </div>
+    </header>
+    <main class="max-w-screen-lg mx-auto grow px-7 w-full">
+      {% block content %} {% endblock %}
+    </main>
+    <footer class="border-slate-50/[0.06] border-t-2">
+      <div
+        class="max-w-screen-lg mx-auto flex md:items-center py-10 px-7 md:flex-row flex-col space-y-5 md:space-y-0"
+      >
+        <p class="text-white font-bold">Narro © 2023</p>
+        <div class="md:ml-auto md:order-2 space-x-5 flex flex-row">
+          <p>
+            A
+            <a
+              href="https://www.gcc.edu"
+              target="_blank"
+              rel="noopener"
+              class="text-blue-600"
+              >Grove City College</a
+            >
+            Project
+          </p>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

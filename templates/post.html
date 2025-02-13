@@ -1,0 +1,38 @@
+{% extends "base.html" %} {% block title %}Post{% endblock %} {% block script %}
+<script src="{{ url_for('static',filename='post.js') }}"></script>
+{% endblock %} {% block content %}
+<section class="space-y-5 mb-10">
+  <h2 class="text-white text-2xl font-bold">{{ post[0].post_title }}</h2>
+  <p>{{ post[0].post_story }}</p>
+  <div class="flex">
+    <div class="space-x-3 flex flex-row items-center">
+      <img
+        src="https://gravatar.com/avatar/{{ post[1].avatar }}?d=retro"
+        alt="Avatar"
+        class="w-7 h-7 rounded-full"
+      />
+      <a href="/profile/{{ post[1].id }}" class="text-white font-bold">
+        {{ post[1].username }}
+      </a>
+    </div>
+    <p class="text-white ml-auto order-2" id="like-count">
+      {{ like_count }} Likes
+    </p>
+  </div>
+</section>
+<div class="space-y-5 mb-10">
+  {% if current_user.is_authenticated %} {% if post_liked %}
+  <button
+    class="bg-slate-50/[0.06] text-white w-full rounded-lg p-3"
+    id="like-button"
+  >
+    Unlike Story
+  </button>
+  {%else%}
+  <button class="bg-blue-600 text-white w-full rounded-lg p-3" id="like-button">
+    Like Story
+  </button>
+  {%endif%} {% endif%}
+</div>
+<input type="hidden" value="{{ post[0].id }}" id="post-id" />
+{% endblock %}

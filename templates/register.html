@@ -1,0 +1,63 @@
+{% extends "base.html" %} {% block title %}Register{% endblock %} {% block
+script %}
+<script src="{{ url_for('static',filename='register.js') }}"></script>
+{% endblock %} {% block content %} {% if get_flashed_messages() %}
+<section class="space-y-5 mb-10">
+  {% for message in get_flashed_messages() %}
+  <div class="p-5 rounded-lg bg-slate-50/[0.06]">
+    <p>{{ message }}</p>
+  </div>
+  {% endfor %}
+</section>
+{% endif %}
+<section class="space-y-5 flex flex-col mb-10">
+  <h2 class="text-2xl font-bold text-white">Register</h2>
+  <form method="POST" id="register-form">
+    {{form.hidden_tag() }}
+    <div id="credential-fields" class="space-y-5">
+      <p>
+        Welcome! Provide us a good email and a suitable password to get started.
+      </p>
+      <div class="space-y-3">
+        {{form.email.label(class = "text-white font-bold") }} {{form.email(
+        class="bg-slate-50/[0.06] rounded-lg w-full p-3 text-slate-400",
+        placeholder="Email")}}
+      </div>
+      <div class="space-y-3">
+        {{form.password.label(class = "text-white font-bold") }}
+        {{form.password( class="bg-slate-50/[0.06] rounded-lg w-full p-3
+        text-slate-400", placeholder="Password" )}}
+      </div>
+      <div class="space-y-3">
+        {{form.confirm_password.label(class = "text-white font-bold") }}
+        {{form.confirm_password( class="bg-slate-50/[0.06] rounded-lg w-full p-3
+        text-slate-400", placeholder="Confirm Password" )}}
+      </div>
+      <button
+        id="register-form-next"
+        type="button"
+        class="bg-blue-600 text-white w-full rounded-lg p-3"
+      >
+        Next
+      </button>
+    </div>
+    <div id="metadata-fields" class="space-y-5" hidden>
+      <p>
+        Great, now to the fun stuff! Provide us a username and a bio for your
+        profile.
+      </p>
+      <div class="space-y-3">
+        {{form.username.label(class = "text-white font-bold") }}
+        {{form.username( class="bg-slate-50/[0.06] rounded-lg w-full p-3
+        text-slate-400", placeholder="Username")}}
+      </div>
+      <div class="space-y-3">
+        {{form.bio.label(class = "text-white font-bold") }} {{form.bio(
+        class="bg-slate-50/[0.06] rounded-lg w-full p-3 text-slate-400",
+        placeholder="Bio")}}
+      </div>
+      {{form.submit(class = "bg-blue-600 text-white w-full rounded-lg p-3")}}
+    </div>
+  </form>
+</section>
+{% endblock %}

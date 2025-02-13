@@ -1,0 +1,41 @@
+{% extends "base.html" %} {% block title %}Feed{% endblock %} {% block content
+%}
+<section class="space-y-5 mb-10 flex flex-col">
+  <h2 class="text-2xl text-white font-bold">Feed</h2>
+  {% if posts %}
+  <p>
+    Here's the latest stories generated. Feeling lucky? View a random story!
+  </p>
+  <a href="/lucky/" role="button">
+    <button class="bg-blue-600 rounded-full text-white px-3 py-1">
+      I'm feeling lucky
+    </button>
+  </a>
+  {% endif %}
+</section>
+<section class="space-y-5 mb-10">
+  <h2 class="text-xl text-white font-bold">Latest Stories</h2>
+  {% if posts %} {% for post in posts %}
+  <div
+    class="p-5 rounded-lg bg-slate-50/[0.06] flex flex-row items-center"
+    onclick="window.location = `/post/{{ post[0].id }}`"
+  >
+    <div class="space-y-3 flex flex-col">
+      <h3 class="text-white font-bold">{{ post[0].post_title }}</h3>
+      <p class="line-clamp-2">{{ post[0].post_story }}</p>
+      <div class="space-x-3 flex flex-row items-center">
+        <img
+          src="https://gravatar.com/avatar/{{ post[1].avatar }}?d=retro"
+          alt="Avatar"
+          class="w-7 h-7 rounded-full"
+        />
+        <a href="/profile/{{ post[1].id }}" class="text-white font-bold">
+          {{ post[1].username }}
+        </a>
+    </div>
+  </div>
+  {% endfor %} {% else %}
+  <div class="p-5 rounded-lg bg-slate-50/[0.06]">There are no posts yet</div>
+  {% endif %}
+</section>
+{% endblock %}

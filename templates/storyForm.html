@@ -1,0 +1,99 @@
+{% extends "base.html" %} {% block title %}Story{% endblock %} {% block content
+%}
+<script src="{{ url_for('static',filename='storyForm.js') }}"></script>
+<section class="space-y-5 mb-10">
+  <h2 class="text-2xl text-white font-bold">Story</h2>
+  <form method="POST" class="space-y-5">
+    <div class="space-y-3">
+      {{form.hidden_tag()}} {{form.topic.label(class = "text-white font-bold")}}
+      {{form.topic(class="bg-slate-50/[0.06] rounded-lg w-full p-3
+      text-slate-400")}}
+    </div>
+    <div class="space-y-3" id="noun1">
+      {{form.noun1.label(class = "text-white font-bold")}} {{form.noun1(
+      class="bg-slate-50/[0.06] rounded-lg w-full p-3 text-slate-400",
+      placeholder="Noun 1" )}}
+    </div>
+    <div class="space-y-3" id="noun2">
+      {{form.noun2.label(class = "text-white font-bold")}} {{form.noun2(
+      class="bg-slate-50/[0.06] rounded-lg w-full p-3 text-slate-400",
+      placeholder="Noun 2" )}}
+    </div>
+    <div class="space-y-3" id="noun3">
+      {{form.noun3.label(class = "text-white font-bold")}} {{form.noun3(
+      class="bg-slate-50/[0.06] rounded-lg w-full p-3 text-slate-400",
+      placeholder="Noun 3" )}}
+    </div>
+    <div class="space-y-3" id="noun4">
+      {{form.noun4.label(class = "text-white font-bold")}} {{form.noun4(
+      class="bg-slate-50/[0.06] rounded-lg w-full p-3 text-slate-400",
+      placeholder="Noun 4" )}}
+    </div>
+    <div class="space-y-3" id="noun5">
+      {{form.noun5.label(class = "text-white font-bold")}}
+      {{form.noun5(class="bg-slate-50/[0.06] rounded-lg w-full p-3
+      text-slate-400", placeholder="Noun 5" )}}
+    </div>
+    <button
+      id="add-noun"
+      type="button"
+      class="bg-blue-600 text-white w-full rounded-lg p-3"
+    >
+      Add Noun
+    </button>
+
+    <div class="space-y-3" id="adjective1">
+      {{form.adjective1.label(class = "text-white font-bold")}}
+      {{form.adjective1( class="bg-slate-50/[0.06] rounded-lg w-full p-3
+      text-slate-400", placeholder="Adjective 1" )}}
+    </div>
+    <div class="space-y-3" id="adjective2">
+      {{form.adjective2.label(class = "text-white font-bold")}}
+      {{form.adjective2( class="bg-slate-50/[0.06] rounded-lg w-full p-3
+      text-slate-400", placeholder="Adjective 2" )}}
+    </div>
+    <div class="space-y-3" id="adjective3">
+      {{form.adjective3.label(class = "text-white font-bold")}}
+      {{form.adjective3( class="bg-slate-50/[0.06] rounded-lg w-full p-3
+      text-slate-400", placeholder="Adjective 3" )}}
+    </div>
+    <button
+      id="add-adjective"
+      type="button"
+      class="bg-blue-600 text-white w-full rounded-lg p-3"
+    >
+      Add Adjective
+    </button>
+
+    <div class="space-y-3" id="verb1">
+      {{form.verb1.label(class = "text-white font-bold")}} {{form.verb1(
+      class="bg-slate-50/[0.06] rounded-lg w-full p-3 text-slate-400",
+      placeholder="Verb 1" )}}
+    </div>
+    <div class="space-y-3" id="verb2">
+      {{form.verb2.label(class = "text-white font-bold")}} {{form.verb2(
+      class="bg-slate-50/[0.06] rounded-lg w-full p-3 text-slate-400",
+      placeholder="Verb 2" )}}
+    </div>
+    <div class="space-y-3" id="verb3">
+      {{form.verb3.label(class = "text-white font-bold")}} {{form.verb3(
+      class="bg-slate-50/[0.06] rounded-lg w-full p-3 text-slate-400",
+      placeholder="Verb 3" )}}
+    </div>
+    <div class="space-y-3" id="verb4">
+      {{form.verb4.label(class = "text-white font-bold")}}
+      {{form.verb4(class="bg-slate-50/[0.06] rounded-lg w-full p-3
+      text-slate-400", placeholder="Verb 4" )}}
+    </div>
+    <button
+      id="add-verb"
+      type="button"
+      class="bg-blue-600 text-white w-full rounded-lg p-3"
+    >
+      Add verb
+    </button>
+
+    {{form.submit(class = "bg-blue-600 text-white w-full rounded-lg p-3")}}
+  </form>
+</section>
+{% endblock %}

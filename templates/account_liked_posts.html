@@ -1,0 +1,21 @@
+{% extends "account.html" %} {% block title %}Account Liked Posts{% endblock %}
+{% block account_content %}
+<section class="space-y-5 mb-10 flex flex-col">
+  <h2 class="text-xl text-white font-bold">My Liked Posts</h2>
+  {% if liked_posts %} {% for post in liked_posts %}
+  <div
+    class="p-5 rounded-lg bg-slate-50/[0.06] flex flex-row items-center"
+    onclick="window.location = `/post/{{ post.id }}`"
+  >
+    <div class="space-y-3 flex flex-col">
+      <h3 class="text-white font-bold">{{ post.post_title }}</h3>
+      <p class="line-clamp-2">{{ post.post_story }}</p>
+    </div>
+  </div>
+  {% endfor %} {% else %}
+  <div class="p-5 rounded-lg bg-slate-50/[0.06]">
+    You have no liked posts yet
+  </div>
+  {% endif %}
+</section>
+{% endblock %}

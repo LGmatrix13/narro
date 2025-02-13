@@ -1,0 +1,42 @@
+{% extends "base.html" %} {% block title %}Account{% endblock %} {% block
+content %}
+<section class="space-y-5 mb-10">
+  <div class="flex space-x-5 items-center">
+    <img
+      src="https://gravatar.com/avatar/{{ current_user.avatar }}?d=retro"
+      alt="Avatar"
+      class="w-10 h-10 rounded-full"
+    />
+    <h1 class="text-2xl text-white font-bold">{{ current_user.username }}</h1>
+  </div>
+  <div class="space-x-3">
+    {% if active == "posts" %}
+    <button
+      class="bg-slate-50/[0.06] px-3 py-1 rounded-full text-white"
+      disabled
+    >
+      My Posts
+    </button>
+    {% else %}
+    <a href="/account/" role="button">
+      <button class="bg-blue-600 px-3 py-1 rounded-full text-white">
+        My Posts
+      </button>
+    </a>
+    {% endif %} {% if active == "liked-posts" %}
+    <button
+      class="bg-slate-50/[0.06] px-3 py-1 rounded-full text-white"
+      disabled
+    >
+      My Liked Posts
+    </button>
+    {% else %}
+    <a href="/account/liked-posts" role="button">
+      <button class="bg-blue-600 px-3 py-1 rounded-full text-white">
+        My Liked Posts
+      </button>
+    </a>
+    {% endif %}
+  </div>
+</section>
+{% block account_content %}{% endblock %} {% endblock %}
